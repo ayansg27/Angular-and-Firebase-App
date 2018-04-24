@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
       (user) => {
         if (user) {
           this.userDetails = user;
-          console.log(this.userDetails);
+          console.log('user detail: '+this.userDetails);
         }
         else {
           this.userDetails = null;
@@ -27,13 +27,13 @@ export class HomeComponent implements OnInit {
       }
     );
 }
-  signInWithGoogle() {
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()
-    )
-  }
+signInWithGoogle() {
+  this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+
+}
 isLoggedIn() {
-  if (this.userDetails == null ) {
-    return false;
+    if (this.userDetails == null ) {
+      return false;
     } 
     else {
       return true;
