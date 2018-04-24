@@ -4,12 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
-import {FirebaseService} from './Services/firebase.service';
 
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListingsComponent } from './components/listings/listings.component';
@@ -17,18 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListingComponent } from './components/listing/listing.component';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
 import { EditListingComponent } from './components/edit-listing/edit-listing.component';
-
-export const environment = {
-  production: false,
-  firebase: {
-    apiKey: "AIzaSyCjtZdECieEJiG1JY0LJ-xrgUAFTcupczM",
-    authDomain: "listing-c9431.firebaseapp.com",
-    databaseURL: "https://listing-c9431.firebaseio.com",
-    projectId: "listing-c9431",
-    storageBucket: "listing-c9431.appspot.com",
-    messagingSenderId: "45939070627"
-  }
-};
+import { FirebaseService } from './Services/firebase.service';
 
 const appRoutes: Routes=[
   {path:'', component: HomeComponent},
@@ -51,10 +39,9 @@ const appRoutes: Routes=[
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, 
+    AngularFireModule.initializeApp(environment.firebase,'angular-auth-firebase'),
     AngularFireAuthModule, 
-    AngularFireStorageModule,
+    AngularFireDatabaseModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [FirebaseService],
