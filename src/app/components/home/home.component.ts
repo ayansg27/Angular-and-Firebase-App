@@ -28,8 +28,13 @@ export class HomeComponent implements OnInit {
     );
 }
 signInWithGoogle() {
-  this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-
+  return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+}
+signInWithTwitter() {
+  return this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+}
+signInWithFacebook(){
+  return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
 }
 isLoggedIn() {
     if (this.userDetails == null ) {
