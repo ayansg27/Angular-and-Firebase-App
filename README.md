@@ -1,5 +1,5 @@
 # CarListings
-
+This is a web application built using Angular2 and Firebase. It lists cars for sale.
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
 ## Development server
